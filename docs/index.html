@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D1 Store | iPhone oficial</title>
+  <meta name="description" content="Preventa iPhone 18 Pro Max e iPhone Dúo. Nuevos sellados, garantía internacional y envíos a todo el Perú." />
+  <link rel="icon" href="favicon.svg" />
+  <meta property="og:title" content="D1 Store — Preventa iPhone 18" />
+  <meta property="og:description" content="Preventa iPhone 18 Pro Max e iPhone Dúo. WhatsApp +51 982 029 518." />
+  <meta property="og:image" content="https://alipioralo-ai.github.io/d1-store/og.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --fg: #f8fafc;
+      --primary: #06b6d4;
+      --muted: #94a3b8;
+      --surface: #1e293b;
+      --border: #334155;
+      --radius: 0.875rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1152px, calc(100% - 2rem)); margin-inline: auto; }
+    header {
+      position: sticky; top: 0; z-index: 40;
+      border-bottom: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
+    .logo {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--primary); color: var(--bg);
+      display: grid; place-items: center; font-weight: 800; font-size: 14px;
+    }
+    .brand strong { display: block; font-size: 1.125rem; letter-spacing: -0.02em; }
+    .brand small {
+      display: block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary);
+    }
+    .links { display: none; gap: 1.5rem; font-size: 14px; font-weight: 500; color: var(--muted); }
+    .links a:hover { color: var(--primary); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .phone-link { display: none; align-items: center; gap: 0.5rem; font-size: 14px; font-weight: 600; color: var(--muted); }
+    .phone-link:hover { color: var(--primary); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      border-radius: 12px; padding: 0.7rem 1.15rem; font-weight: 600; border: 0;
+    }
+    .btn-primary { background: var(--primary); color: var(--bg); }
+    .btn-outline { border: 1px solid var(--border); background: transparent; color: var(--fg); }
+    .hero { position: relative; overflow: hidden; padding: 3rem 0 4rem; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: color-mix(in srgb, var(--primary) 10%, transparent); pointer-events: none;
+    }
+    .hero-grid { position: relative; display: grid; gap: 2.5rem; align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      color: var(--primary); border-radius: 999px; padding: 0.25rem 0.75rem;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 1rem 0; }
+    h1 span { display: block; color: var(--primary); }
+    .lede { max-width: 28rem; color: var(--muted); font-size: 1.125rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+    .trust-list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; padding: 0; margin: 0; list-style: none; color: var(--muted); font-size: 14px; }
+    .trust-list li { display: flex; align-items: center; gap: 0.4rem; }
+    .hero-cards { display: grid; gap: 1rem; }
+    .hero-card {
+      position: relative; overflow: hidden; border-radius: 1rem;
+      border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      display: flex; align-items: center;
+    }
+    .hero-card img { height: 160px; width: auto; object-fit: contain; padding: 0.75rem; }
+    .hero-card .info { padding: 1rem 3rem 1rem 0.25rem; }
+    .badge {
+      position: absolute; right: 12px; top: 12px; z-index: 2;
+      border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; background: var(--primary); color: var(--bg);
+    }
+    .badge.nuevo {
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      color: var(--primary); border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
+    }
+    .price-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary); }
+    .price { font-size: 1.25rem; font-weight: 800; margin: 0; }
+    .strike { color: var(--muted); text-decoration: line-through; font-size: 14px; }
+    .bar {
+      border-block: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+      background: color-mix(in srgb, var(--primary) 5%, transparent);
+      padding: 1rem 0;
+    }
+    .bar-inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2rem; font-size: 14px; font-weight: 500; color: var(--muted); }
+    .bar-inner span { display: flex; align-items: center; gap: 0.5rem; }
+    section { padding: 4rem 0; }
+    .center { text-align: center; }
+    h2 { font-size: 1.875rem; letter-spacing: -0.03em; margin: 0 0 0.5rem; }
+    h2 span { color: var(--primary); }
+    .sub { color: var(--muted); max-width: 32rem; margin: 0 auto 2.5rem; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    .card {
+      position: relative; display: flex; flex-direction: column;
+      overflow: hidden; border-radius: 1rem; border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+    }
+    .card:hover { border-color: color-mix(in srgb, var(--primary) 40%, transparent); }
+    .card-img { height: 208px; display: grid; place-items: center; }
+    .card-img img { height: 176px; width: auto; object-fit: contain; }
+    .card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+    .card h3 { margin: 0; }
+    .card .spec { color: var(--muted); font-size: 14px; margin: 0 0 1rem; }
+    .card-foot {
+      margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;
+      border-top: 1px solid var(--border); padding-top: 0.75rem;
+    }
+    .tiny { font-size: 12px; color: var(--muted); text-align: right; }
+    .consult {
+      margin-top: 1rem; display: block; text-align: center; border-radius: 8px; padding: 0.65rem;
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      color: var(--primary); font-size: 14px; font-weight: 600;
+    }
+    .consult:hover { background: var(--primary); color: var(--bg); }
+    .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
+    .tab {
+      border-radius: 999px; padding: 0.5rem 1rem; font-size: 14px; font-weight: 600;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+    }
+    .tab.on { background: var(--primary); color: var(--bg); border-color: var(--primary); }
+    .table-wrap { overflow-x: auto; border-radius: 1rem; border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent); }
+    table { width: 100%; min-width: 640px; border-collapse: collapse; text-align: left; font-size: 14px; }
+    th {
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+      color: var(--primary); text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px;
+      padding: 0.75rem 1rem;
+    }
+    td { padding: 0.75rem 1rem; border-top: 1px solid var(--border); color: var(--muted); }
+    td.strong { color: var(--fg); font-weight: 600; }
+    td.cyan { color: var(--primary); font-weight: 700; }
+    .cta { text-align: center; padding: 5rem 1rem; }
+    .cta p { color: var(--muted); font-size: 1.125rem; }
+    .wa-big { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 800; color: var(--primary); margin: 0.5rem 0 1.5rem; }
+    footer { border-top: 1px solid color-mix(in srgb, var(--primary) 10%, transparent); padding: 3rem 0; }
+    .foot { display: grid; gap: 2rem; }
+    footer .muted { color: var(--muted); font-size: 14px; }
+    .copy { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+    .float {
+      position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--primary); color: var(--bg);
+      display: grid; place-items: center; box-shadow: 0 10px 30px color-mix(in srgb, var(--primary) 35%, transparent);
+    }
+    .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .hero-card img { height: 192px; }
+    }
+    @media (min-width: 768px) {
+      .links, .phone-link { display: flex; }
+      .foot { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#inicio">
+        <span class="logo">D1</span>
+        <span>
+          <strong>D1 STORE</strong>
+          <small>Tu mundo en tecnología</small>
+        </span>
+      </a>
+      <div class="links">
+        <a href="#preventa">Preventa</a>
+        <a href="#modelos">Modelos</a>
+        <a href="#precios">Precios</a>
+      </div>
+      <div class="nav-right">
+        <a class="phone-link" href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>
+          +51 982 029 518
+        </a>
+        <a class="btn btn-primary" href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener">Contactar</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="pill"><span class="dot"></span> Preventa oficial abierta</p>
+        <h1>iPhone 18 Pro Max<span>& iPhone Dúo</span></h1>
+        <p class="lede">Fotos oficiales de cada modelo. Equipos nuevos sellados, 1 año de garantía internacional y envíos a todo el Perú.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#preventa">Ver preventa →</a>
+          <a class="btn btn-outline" href="#modelos">Ver todos los iPhone</a>
+        </div>
+        <ul class="trust-list">
+          <li>Garantía internacional</li>
+          <li>Envíos a todo el Perú</li>
+          <li>Originales sellados</li>
+        </ul>
+      </div>
+      <div class="hero-cards">
+        <article class="hero-card">
+          <span class="badge">Preventa</span>
+          <img src="phones/18-pro-max-burgundy.png" alt="iPhone 18 Pro Max burgundy" />
+          <div class="info">
+            <h3>iPhone 18 Pro Max</h3>
+            <p class="spec" style="color:var(--muted);font-size:14px">256 GB · eSIM · Burgundy</p>
+            <div class="price-row">
+              <div><p class="kicker">Preventa</p><p class="price">S/ 6,499</p></div>
+              <div><p class="kicker" style="color:var(--muted);text-transform:none;letter-spacing:0">Contra entrega</p><p class="strike">S/ 6,999</p></div>
+            </div>
+          </div>
+        </article>
+        <article class="hero-card">
+          <span class="badge">Preventa</span>
+          <img src="phones/duo-star-white.png" alt="iPhone Dúo Star White" />
+          <div class="info">
+            <h3>iPhone Dúo</h3>
+            <p class="spec" style="color:var(--muted);font-size:14px">256 GB · Star White · Plegable</p>
+            <div class="price-row">
+              <div><p class="kicker">Preventa</p><p class="price">S/ 8,290</p></div>
+              <div><p class="kicker" style="color:var(--muted);text-transform:none;letter-spacing:0">Contra entrega</p><p class="strike">S/ 8,790</p></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="bar">
+    <div class="wrap bar-inner">
+      <span>1 año de garantía internacional</span>
+      <span>Nuevos sellados</span>
+      <span>Tiendas y oficinas físicas</span>
+      <span>Asesoría personalizada</span>
+    </div>
+  </div>
+
+  <section id="preventa">
+    <div class="wrap">
+      <header class="center">
+        <h2>Preventa <span>iPhone 18</span> & Dúo</h2>
+        <p class="sub">Fotos oficiales de Apple. Reserva ahora con precio especial de preventa.</p>
+      </header>
+      <div class="grid" id="preventa-grid"></div>
+    </div>
+  </section>
+
+  <section id="modelos" style="background:var(--bg)">
+    <div class="wrap">
+      <header class="center">
+        <h2>Más modelos <span>iPhone</span></h2>
+        <p class="sub">Stock inmediato. Precios por unidad y por volumen.</p>
+      </header>
+      <div class="tabs" id="tabs">
+        <button class="tab on" data-tab="all" type="button">Todos</button>
+        <button class="tab" data-tab="17" type="button">iPhone 17</button>
+        <button class="tab" data-tab="16" type="button">iPhone 16</button>
+        <button class="tab" data-tab="15" type="button">iPhone 15</button>
+      </div>
+      <div class="grid" id="catalog-grid"></div>
+    </div>
+  </section>
+
+  <section id="precios">
+    <div class="wrap">
+      <header class="center">
+        <h2>Lista de <span>precios</span></h2>
+        <p class="sub">iPhone 18 Pro · Pro Max · Dúo</p>
+      </header>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Modelo</th><th>Contra entrega</th><th>Preventa</th></tr>
+          </thead>
+          <tbody id="price-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contacto">
+    <h2>¿Listo para reservar?</h2>
+    <p>Te asesoramos por WhatsApp. Preventa con precio especial por tiempo limitado.</p>
+    <a class="wa-big" href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener">+51 982 029 518</a>
+    <div>
+      <a class="btn btn-primary" href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <p style="font-size:1.125rem;font-weight:800;margin:0 0 0.5rem">D1 STORE</p>
+          <p class="muted">iPhone originales y sellados con garantía internacional. Envíos a todo el Perú.</p>
+        </div>
+        <div>
+          <p style="font-weight:700">Productos</p>
+          <p class="muted"><a href="#preventa">Preventa iPhone 18</a></p>
+          <p class="muted"><a href="#modelos">iPhone 17 / 16 / 15</a></p>
+        </div>
+        <div>
+          <p style="font-weight:700">Servicios</p>
+          <p class="muted">Envíos seguros</p>
+          <p class="muted">Garantía internacional</p>
+          <p class="muted">Asesoría personalizada</p>
+        </div>
+        <div>
+          <p style="font-weight:700">Contacto</p>
+          <p><a href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600">+51 982 029 518</a></p>
+          <p class="muted">WhatsApp · Perú</p>
+        </div>
+      </div>
+      <p class="copy">© 2026 D1 Store · Original · Seguro · Siempre contigo</p>
+    </div>
+  </footer>
+
+  <a class="float" href="https://wa.me/51982029518?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preventa%20del%20iPhone%2018%20Pro%20Max%20%2F%20iPhone%20D%C3%BAo" target="_blank" rel="noopener" aria-label="WhatsApp +51 982 029 518">
+    <svg class="icon" style="width:28px;height:28px" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+
+  <script>
+    const PRODUCTS = [
+      { series:"18", name:"iPhone 18 Pro", storage:"256 GB eSIM", image:"phones/18-pro-black.png", tag:"preventa", preventa:5499, contra:5899 },
+      { series:"18", name:"iPhone 18 Pro", storage:"512 GB eSIM", image:"phones/18-pro-silver.png", tag:"preventa", preventa:6099, contra:6499 },
+      { series:"18", name:"iPhone 18 Pro", storage:"1 TB eSIM", image:"phones/18-pro-glacier.png", tag:"preventa", preventa:7299, contra:7690 },
+      { series:"18", name:"iPhone 18 Pro Max", storage:"256 GB eSIM", image:"phones/18-pro-max-black.png", tag:"preventa", preventa:6499, contra:6999 },
+      { series:"18", name:"iPhone 18 Pro Max", storage:"512 GB eSIM", image:"phones/18-pro-max-silver.png", tag:"preventa", preventa:6990, contra:7499 },
+      { series:"18", name:"iPhone 18 Pro Max", storage:"1 TB eSIM", image:"phones/18-pro-max-glacier.png", tag:"preventa", preventa:7899, contra:8299 },
+      { series:"18", name:"iPhone 18 Pro Max", storage:"2 TB eSIM", image:"phones/18-pro-max-burgundy.png", tag:"preventa", preventa:9390, contra:9990 },
+      { series:"duo", name:"iPhone Dúo", storage:"256 GB", image:"phones/duo-star-white.png", tag:"preventa", preventa:8290, contra:8790 },
+      { series:"duo", name:"iPhone Dúo", storage:"512 GB", image:"phones/duo-night-sky.png", tag:"preventa", preventa:8999, contra:9499 },
+      { series:"duo", name:"iPhone Dúo", storage:"1 TB", image:"phones/duo-star-white.png", tag:"preventa", preventa:10290, contra:10790 },
+      { series:"duo", name:"iPhone Dúo", storage:"2 TB", image:"phones/duo-night-sky.png", tag:"preventa", preventa:12290, contra:12699 },
+      { series:"17", name:"iPhone 17", storage:"256 GB eSIM", image:"phones/17-mistblue.png", tag:"nuevo", unit:3699, bulk3:3599, bulk10:3299 },
+      { series:"17", name:"iPhone 17", storage:"256 GB Chip + eSIM", image:"phones/17-lavender.png", tag:"nuevo", unit:3899, bulk3:3799, bulk10:3499 },
+      { series:"17", name:"iPhone 17", storage:"512 GB eSIM", image:"phones/17-black.png", tag:"nuevo", unit:4299, bulk3:4199, bulk10:3999 },
+      { series:"17", name:"iPhone 17 Air", storage:"Cloud White", image:"phones/17-air-white.png", tag:"nuevo", unit:3999, bulk3:3899, bulk10:3599 },
+      { series:"17", name:"iPhone 17 Pro", storage:"256 GB eSIM", image:"phones/17-pro-blue.png", tag:"nuevo", unit:4799, bulk3:4699, bulk10:4299 },
+      { series:"17", name:"iPhone 17 Pro", storage:"512 GB eSIM", image:"phones/17-pro-silver.png", tag:"nuevo", unit:5499, bulk3:5399, bulk10:4999 },
+      { series:"17", name:"iPhone 17 Pro Max", storage:"256 GB eSIM", image:"phones/17-pro-max-blue.png", tag:"nuevo", unit:4999, bulk3:4799, bulk10:4499 },
+      { series:"17", name:"iPhone 17 Pro Max", storage:"256 GB Chip + eSIM", image:"phones/17-pro-max-orange.png", tag:"nuevo", unit:5599, bulk3:5399, bulk10:5099 },
+      { series:"17", name:"iPhone 17 Pro Max", storage:"512 GB eSIM", image:"phones/17-pro-max-silver.png", tag:"nuevo", unit:5599, bulk3:5399, bulk10:5070 },
+      { series:"17", name:"iPhone 17 Pro Max", storage:"1 TB eSIM", image:"phones/17-pro-max-orange.png", tag:"nuevo", unit:7499, bulk3:7299, bulk10:6999 },
+      { series:"17", name:"iPhone 17 Pro Max", storage:"2 TB eSIM", image:"phones/17-pro-max-blue.png", tag:"nuevo", unit:8990, bulk3:8790, bulk10:7999 },
+      { series:"16", name:"iPhone 16", storage:"128 GB eSIM", image:"phones/16-ultramarine.png", unit:2899, bulk3:2799, bulk10:2499 },
+      { series:"16", name:"iPhone 16", storage:"128 GB Chip + eSIM", image:"phones/16-black.png", unit:2999, bulk3:2899, bulk10:2599 },
+      { series:"16", name:"iPhone 16", storage:"256 GB eSIM", image:"phones/16-teal.png", unit:3199, bulk3:3099, bulk10:2799 },
+      { series:"16", name:"iPhone 16", storage:"256 GB Chip + eSIM", image:"phones/16-pink.png", unit:3399, bulk3:3299, bulk10:2999 },
+      { series:"16", name:"iPhone 16 Pro", storage:"128 GB eSIM", image:"phones/16-pro-natural.png", unit:4199, bulk3:3999, bulk10:3699 },
+      { series:"16", name:"iPhone 16 Pro", storage:"128 GB Chip + eSIM", image:"phones/16-pro-desert.png", unit:4299, bulk3:4199, bulk10:3850 },
+      { series:"16", name:"iPhone 16 Pro Max", storage:"256 GB eSIM", image:"phones/16-pro-max-desert.png", unit:4799, bulk3:4599, bulk10:4299 },
+      { series:"16", name:"iPhone 16 Pro Max", storage:"256 GB Chip + eSIM", image:"phones/16-pro-max-black.png", unit:4950, bulk3:4850, bulk10:4499 },
+      { series:"16", name:"iPhone 16 Pro Max", storage:"512 GB Chip + eSIM", image:"phones/16-pro-max-desert.png", unit:5499, bulk3:5399, bulk10:5099 },
+      { series:"15", name:"iPhone 15", storage:"128 GB eSIM", image:"phones/15-pink.png", unit:2599, bulk3:2399, bulk10:2099 },
+      { series:"15", name:"iPhone 15", storage:"128 GB Chip + eSIM", image:"phones/15-black.png", unit:2699, bulk3:2599, bulk10:2199 }
+    ];
+
+    const soles = (n) => "S/ " + n.toLocaleString("es-PE");
+    const wa = (p) => "https://wa.me/51982029518?text=" + encodeURIComponent("Hola, quiero consultar " + p.name + " " + p.storage);
+
+    function card(p) {
+      const badge = p.tag ? `<span class="badge${p.tag === "nuevo" ? " nuevo" : ""}">${p.tag === "preventa" ? "Preventa" : "Nuevo"}</span>` : "";
+      const main = p.preventa ?? p.unit ?? 0;
+      const label = p.preventa ? "Preventa" : "Unidad";
+      const extra = p.contra
+        ? `Contra entrega<br><strong style="color:var(--fg)">${soles(p.contra)}</strong>`
+        : (p.bulk3 && p.bulk10 ? `+3: <strong style="color:var(--fg)">${soles(p.bulk3)}</strong><br>+10: <strong style="color:var(--fg)">${soles(p.bulk10)}</strong>` : "");
+      return `<article class="card">${badge}
+        <div class="card-img"><img src="${p.image}" alt="${p.name} ${p.storage}"></div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="spec">${p.storage}</p>
+          <div class="card-foot">
+            <div><p class="price">${soles(main)}</p><p class="kicker">${label}</p></div>
+            <p class="tiny">${extra}</p>
+          </div>
+          <a class="consult" href="${wa(p)}" target="_blank" rel="noopener">${p.preventa ? "Reservar ahora" : "Consultar"}</a>
+        </div>
+      </article>`;
+    }
+
+    document.getElementById("preventa-grid").innerHTML = PRODUCTS.filter((p) => p.series === "18" || p.series === "duo").map(card).join("");
+
+    const catalog = PRODUCTS.filter((p) => p.series === "17" || p.series === "16" || p.series === "15");
+    const catalogGrid = document.getElementById("catalog-grid");
+    function renderCatalog(tab) {
+      catalogGrid.innerHTML = catalog.filter((p) => tab === "all" || p.series === tab).map(card).join("");
+    }
+    renderCatalog("all");
+    document.getElementById("tabs").addEventListener("click", (e) => {
+      const btn = e.target.closest(".tab");
+      if (!btn) return;
+      document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("on", t === btn));
+      renderCatalog(btn.dataset.tab);
+    });
+
+    document.getElementById("price-rows").innerHTML = PRODUCTS.filter((p) => p.preventa && p.contra).map((p) =>
+      `<tr><td class="strong">${p.name} ${p.storage}</td><td class="strong">${soles(p.contra)}</td><td class="cyan">${soles(p.preventa)}</td></tr>`
+    ).join("");
+  </script>
+</body>
+</html>
