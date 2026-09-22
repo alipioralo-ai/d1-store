@@ -2,16 +2,16 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Shield,
-  Truck,
   BadgeCheck,
   Store,
   Headset,
   ArrowRight,
+  MapPin,
   MessageCircle,
   Phone,
 } from "lucide-react";
 import { featured, products, type Series, type Product } from "@/data/catalog";
-import { soles, waLink, WA_DISPLAY } from "@/lib/utils";
+import { soles, waLink, WA_DISPLAY, STORE_NAME, STORE_ADDRESS, STORE_MAPS } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -28,6 +28,7 @@ function Home() {
       <PreventaGrid />
       <Catalog />
       <PriceTable />
+      <Visit />
       <Cta />
       <Footer />
       <a
@@ -67,6 +68,9 @@ function Header() {
           </a>
           <a href="#precios" className="hover:text-primary">
             Precios
+          </a>
+          <a href="#tienda" className="hover:text-primary">
+            Tienda
           </a>
         </div>
         <div className="flex items-center gap-3">
@@ -109,7 +113,7 @@ function Hero() {
           </h1>
           <p className="mb-8 max-w-md text-lg text-muted">
             Fotos oficiales de cada modelo. Equipos nuevos sellados, 1 año de garantía internacional
-            y envíos a todo el Perú.
+            y tienda física en Cusco.
           </p>
           <div className="mb-8 flex flex-wrap gap-3">
             <a
@@ -131,7 +135,7 @@ function Hero() {
               <Shield className="size-4 text-primary" /> Garantía internacional
             </li>
             <li className="flex items-center gap-1.5">
-              <Truck className="size-4 text-primary" /> Envíos a todo el Perú
+              <Store className="size-4 text-primary" /> Tienda física en Cusco
             </li>
             <li className="flex items-center gap-1.5">
               <BadgeCheck className="size-4 text-primary" /> Originales sellados
@@ -213,7 +217,7 @@ function TrustBar() {
   const items = [
     { icon: Shield, label: "1 año de garantía internacional" },
     { icon: BadgeCheck, label: "Nuevos sellados" },
-    { icon: Store, label: "Tiendas y oficinas físicas" },
+    { icon: Store, label: "Tienda física en Cusco · IMA SUMAQ 265" },
     { icon: Headset, label: "Asesoría personalizada" },
   ];
   return (
@@ -392,12 +396,39 @@ function PriceTable() {
   );
 }
 
+function Visit() {
+  return (
+    <section id="tienda" className="px-4 py-16">
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="mb-2 text-3xl font-extrabold tracking-tight">
+          Tienda física en <span className="text-primary">Cusco</span>
+        </h2>
+        <p className="mb-6 text-muted">
+          Visítanos, prueba los equipos y retíralos el mismo día.
+        </p>
+        <p className="text-lg font-extrabold">{STORE_NAME}</p>
+        <p className="mt-1 text-muted">{STORE_ADDRESS}</p>
+        <a
+          href={STORE_MAPS}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-5 py-3 font-semibold text-primary hover:bg-primary hover:text-bg"
+        >
+          <MapPin className="size-4" />
+          Cómo llegar
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function Cta() {
   return (
     <section id="contacto" className="px-4 py-20 text-center">
       <h2 className="mb-3 text-3xl font-extrabold tracking-tight">¿Listo para reservar?</h2>
       <p className="mx-auto mb-3 max-w-md text-lg text-muted">
-        Te asesoramos por WhatsApp. Preventa con precio especial por tiempo limitado.
+        Te asesoramos por WhatsApp o en nuestra tienda de Cusco. Preventa con precio especial
+        por tiempo limitado.
       </p>
       <p className="mb-8">
         <a
@@ -430,7 +461,7 @@ function Footer() {
         <div>
           <p className="mb-2 text-lg font-extrabold">D1 STORE CUSCO</p>
           <p className="max-w-xs text-sm text-muted">
-            iPhone originales y sellados con garantía internacional. Envíos a todo el Perú.
+            iPhone originales y sellados con garantía internacional. Tienda física en Cusco.
           </p>
         </div>
         <div>
@@ -451,7 +482,7 @@ function Footer() {
         <div>
           <p className="mb-3 font-bold">Servicios</p>
           <ul className="space-y-2 text-sm text-muted">
-            <li>Envíos seguros</li>
+            <li>Tienda física en Cusco</li>
             <li>Garantía internacional</li>
             <li>Asesoría personalizada</li>
           </ul>
@@ -467,7 +498,17 @@ function Footer() {
             <Phone className="size-4" />
             {WA_DISPLAY}
           </a>
-          <p className="mt-2 text-sm text-muted">WhatsApp · Cusco, Perú</p>
+          <p className="mt-3 text-sm font-semibold text-fg">{STORE_NAME}</p>
+          <p className="mt-1 text-sm text-muted">{STORE_ADDRESS}</p>
+          <a
+            href={STORE_MAPS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+          >
+            <MapPin className="size-3.5" />
+            Cómo llegar
+          </a>
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl border-t border-border pt-6 text-sm text-muted">

@@ -6,7 +6,9 @@ Fotos oficiales de cada modelo, lista de precios en soles y contacto por WhatsAp
 
 ## Contacto
 
-WhatsApp: **+51 982 029 518**
+WhatsApp: **+51 997 610 401**
+
+Tienda física: Centro Comercial IMA SUMAQ 265, Calle Maruri, 1er piso — Tienda 135, Cusco
 
 ## Cómo correrla
 
