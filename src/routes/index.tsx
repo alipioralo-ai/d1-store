@@ -54,7 +54,7 @@ function Header() {
           <span className="leading-tight">
             <strong className="block text-lg font-extrabold tracking-tight">D1 STORE</strong>
             <span className="text-xs font-medium uppercase tracking-wider text-primary">
-              Tu mundo en tecnología
+              Cusco
             </span>
           </span>
         </a>
@@ -428,7 +428,7 @@ function Footer() {
     <footer className="border-t border-primary/10 bg-bg px-4 py-12">
       <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="mb-2 text-lg font-extrabold">D1 STORE</p>
+          <p className="mb-2 text-lg font-extrabold">D1 STORE CUSCO</p>
           <p className="max-w-xs text-sm text-muted">
             iPhone originales y sellados con garantía internacional. Envíos a todo el Perú.
           </p>
@@ -467,11 +467,11 @@ function Footer() {
             <Phone className="size-4" />
             {WA_DISPLAY}
           </a>
-          <p className="mt-2 text-sm text-muted">WhatsApp · Perú</p>
+          <p className="mt-2 text-sm text-muted">WhatsApp · Cusco, Perú</p>
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl border-t border-border pt-6 text-sm text-muted">
-        © 2026 D1 Store · Original · Seguro · Siempre contigo
+        © 2026 D1 Store Cusco · Original · Seguro · Siempre contigo
       </p>
     </footer>
   );
