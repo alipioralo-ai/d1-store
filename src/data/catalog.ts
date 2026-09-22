@@ -161,7 +161,7 @@ export const products: Product[] = [
   {
     id: "17air",
     series: "17",
-    name: "iPhone 17 Air",
+    name: "iPhone Air",
     storage: "Cloud White",
     image: "/phones/17-air-white.png",
     tag: "nuevo",
