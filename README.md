@@ -1,4 +1,4 @@
-# D1 Store Cusco
+# D1 Store
 
 Tienda web de iPhone con preventa del **iPhone 18 Pro Max** e **iPhone Dúo**.
 
