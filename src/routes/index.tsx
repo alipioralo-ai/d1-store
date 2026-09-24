@@ -305,7 +305,11 @@ function Catalog() {
 }
 
 function ProductCard({ product: p }: { product: Product }) {
-  const msg = waLink(`Hola, quiero consultar ${p.name} ${p.storage}`);
+  const msg = waLink(
+    p.preventa
+      ? `Hola, quiero información sobre la preventa del ${p.name} de ${p.storage}`
+      : `Hola, quiero comprar el ${p.name} de ${p.storage}`,
+  );
   return (
     <article className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface/70 transition hover:border-primary/40">
       {p.tag && (
@@ -353,7 +357,7 @@ function ProductCard({ product: p }: { product: Product }) {
           rel="noopener noreferrer"
           className="mt-4 block rounded-lg border border-primary/30 bg-primary/10 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary hover:text-bg"
         >
-          {p.preventa ? "Reservar ahora" : "Consultar"}
+          {p.preventa ? "Reservar ahora" : "Comprar Ahora!"}
         </a>
       </div>
     </article>

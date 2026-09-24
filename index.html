@@ -404,7 +404,11 @@
     ];
 
     const soles = (n) => "S/ " + n.toLocaleString("es-PE");
-    const wa = (p) => "https://wa.me/51997610401?text=" + encodeURIComponent("Hola, quiero consultar " + p.name + " " + p.storage);
+    const wa = (p) => "https://wa.me/51997610401?text=" + encodeURIComponent(
+      p.preventa
+        ? "Hola, quiero información sobre la preventa del " + p.name + " de " + p.storage
+        : "Hola, quiero comprar el " + p.name + " de " + p.storage
+    );
 
     function card(p) {
       const badge = p.tag ? `<span class="badge${p.tag === "nuevo" ? " nuevo" : ""}">${p.tag === "preventa" ? "Preventa" : "Nuevo"}</span>` : "";
@@ -422,7 +426,7 @@
             <div><p class="price">${soles(main)}</p><p class="kicker">${label}</p></div>
             <p class="tiny">${extra}</p>
           </div>
-          <a class="consult" href="${wa(p)}" target="_blank" rel="noopener">${p.preventa ? "Reservar ahora" : "Consultar"}</a>
+          <a class="consult" href="${wa(p)}" target="_blank" rel="noopener">${p.preventa ? "Reservar ahora" : "Comprar Ahora!"}</a>
         </div>
       </article>`;
     }
