@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { featured, products, type Series, type Product } from "@/data/catalog";
 import { soles, waLink, WA_DISPLAY, STORE_NAME, STORE_ADDRESS, STORE_MAPS } from "@/lib/utils";
+import { Reveal, WordLine, useReveal } from "@/components/reveal";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -23,6 +24,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-bg text-fg">
       <Header />
+      <FilmHero />
       <Hero />
       <TrustBar />
       <PreventaGrid />
@@ -97,9 +99,46 @@ function Header() {
   );
 }
 
+function FilmHero() {
+  return (
+    <section id="inicio" className="relative isolate min-h-[88vh] overflow-hidden bg-black">
+      <video
+        className="absolute inset-0 size-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/videos/iphone-18-pro-hero.jpg"
+        aria-label="Video del iPhone 18 Pro"
+      >
+        <source src="/videos/iphone-18-pro-hero.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/25 to-bg/45" />
+      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-4xl flex-col items-center justify-end px-4 pb-16 pt-28 text-center">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-primary">
+          iPhone 18 Pro
+        </p>
+        <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+          <WordLine text="El Pro va por más." />
+        </h1>
+        <p className="mt-5 max-w-md text-lg text-muted">
+          Preventa oficial en D1 Store. iPhone 18 Pro Max e iPhone Dúo.
+        </p>
+        <a
+          href="#preventa"
+          className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-bg"
+        >
+          Ver preventa
+          <ArrowRight className="size-4" />
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden px-4 pb-16 pt-12 md:pt-16">
+    <section className="relative overflow-hidden px-4 pb-16 pt-12 md:pt-16">
       <div className="pointer-events-none absolute inset-0 bg-primary/10" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
         <div>
@@ -108,8 +147,10 @@ function Hero() {
             Preventa oficial abierta
           </p>
           <h1 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-            iPhone 18 Pro Max
-            <span className="mt-1 block text-primary">& iPhone Dúo</span>
+            <WordLine text="iPhone 18 Pro Max" />
+            <span className="mt-1 block text-primary">
+              <WordLine text="& iPhone Dúo" />
+            </span>
           </h1>
           <p className="mb-8 max-w-md text-lg text-muted">
             Fotos oficiales de cada modelo. Equipos nuevos sellados, 1 año de garantía internacional
@@ -185,8 +226,9 @@ function HeroCard({
   image: string;
   alt: string;
 }) {
+  const ref = useReveal<HTMLElement>();
   return (
-    <article className="relative overflow-hidden rounded-2xl border border-primary/25 bg-surface/80">
+    <article ref={ref} className="reveal relative overflow-hidden rounded-2xl border border-primary/25 bg-surface/80">
       <span className="absolute right-3 top-3 z-10 rounded-md bg-primary px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-bg">
         {badge}
       </span>
@@ -221,7 +263,7 @@ function TrustBar() {
     { icon: Headset, label: "Asesoría personalizada" },
   ];
   return (
-    <div className="border-y border-primary/15 bg-primary/5 px-4 py-4">
+    <Reveal as="div" className="border-y border-primary/15 bg-primary/5 px-4 py-4">
       <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-muted">
         {items.map(({ icon: Icon, label }) => (
           <span key={label} className="flex items-center gap-2">
@@ -230,7 +272,7 @@ function TrustBar() {
           </span>
         ))}
       </div>
-    </div>
+    </Reveal>
   );
 }
 
@@ -239,7 +281,7 @@ function PreventaGrid() {
     <section id="preventa" className="mx-auto max-w-6xl px-4 py-16">
       <header className="mb-10 text-center">
         <h2 className="mb-2 text-3xl font-extrabold tracking-tight">
-          Preventa <span className="text-primary">iPhone 18</span> & Dúo
+          <WordLine text="Preventa iPhone 18 & Dúo" accent="Preventa" />
         </h2>
         <p className="mx-auto max-w-lg text-muted">
           Fotos oficiales de Apple. Reserva ahora con precio especial de preventa.
@@ -267,7 +309,7 @@ function Catalog() {
       <div className="mx-auto max-w-6xl">
         <header className="mb-8 text-center">
           <h2 className="mb-2 text-3xl font-extrabold tracking-tight">
-            Más modelos <span className="text-primary">iPhone</span>
+            <WordLine text="Más modelos iPhone" accent="iPhone" />
           </h2>
           <p className="text-muted">Stock inmediato. Precios por unidad y por volumen.</p>
         </header>
@@ -305,13 +347,17 @@ function Catalog() {
 }
 
 function ProductCard({ product: p }: { product: Product }) {
+  const ref = useReveal<HTMLElement>();
   const msg = waLink(
     p.preventa
       ? `Hola, quiero información sobre la preventa del ${p.name} de ${p.storage}`
       : `Hola, quiero comprar el ${p.name} de ${p.storage}`,
   );
   return (
-    <article className="relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface/70 transition hover:border-primary/40">
+    <article
+      ref={ref}
+      className="reveal relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface/70 transition hover:border-primary/40"
+    >
       {p.tag && (
         <span
           className={
@@ -370,11 +416,11 @@ function PriceTable() {
     <section id="precios" className="mx-auto max-w-6xl px-4 py-16">
       <header className="mb-8 text-center">
         <h2 className="mb-2 text-3xl font-extrabold tracking-tight">
-          Lista de <span className="text-primary">precios</span>
+          <WordLine text="Lista de precios" accent="precios" />
         </h2>
         <p className="text-muted">iPhone 18 Pro · Pro Max · Dúo</p>
       </header>
-      <div className="overflow-x-auto rounded-2xl border border-primary/20">
+      <Reveal className="overflow-x-auto rounded-2xl border border-primary/20">
         <table className="w-full min-w-2xl text-left text-sm">
           <thead className="bg-primary/15 text-xs uppercase tracking-wide text-primary">
             <tr>
@@ -395,7 +441,7 @@ function PriceTable() {
             ))}
           </tbody>
         </table>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -405,7 +451,7 @@ function Visit() {
     <section id="tienda" className="px-4 py-16">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="mb-2 text-3xl font-extrabold tracking-tight">
-          Tienda física en <span className="text-primary">Cusco</span>
+          <WordLine text="Tienda física en Cusco" accent="Cusco" />
         </h2>
         <p className="mb-6 text-muted">
           Visítanos, prueba los equipos y retíralos el mismo día.
@@ -429,7 +475,9 @@ function Visit() {
 function Cta() {
   return (
     <section id="contacto" className="px-4 py-20 text-center">
-      <h2 className="mb-3 text-3xl font-extrabold tracking-tight">¿Listo para reservar?</h2>
+      <h2 className="mb-3 text-3xl font-extrabold tracking-tight">
+        <WordLine text="¿Listo para reservar?" />
+      </h2>
       <p className="mx-auto mb-3 max-w-md text-lg text-muted">
         Te asesoramos por WhatsApp o en nuestra tienda de Cusco. Preventa con precio especial
         por tiempo limitado.
